@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Secured Diary | flowieefasy.id</title>
+    
+    <!-- Google Fonts: Gaegu untuk tulisan tangan & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            background-color: #FFF5F7;
+            /* Pola titik-titik buku diary */
+            background-image: radial-gradient(#FFD1DC 0.8px, transparent 0.8px);
+            background-size: 24px 24px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #724E56;
+        }
+
+        .scrapbook-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Judul Gaya Scrapbook */
+        .journal-title {
+            font-family: 'Gaegu', cursive;
+            background: white;
+            display: inline-block;
+            padding: 10px 30px;
+            border: 2px solid #FFD1DC;
+            transform: rotate(-2deg);
+            box-shadow: 5px 5px 0px #FFD1DC;
+            margin-bottom: 50px;
+        }
+
+        /* Polaroid / Scrapbook Photo Frame */
+        .photo-entry {
+            background: white;
+            padding: 12px 12px 35px 12px;
+            box-shadow: 0 10px 20px rgba(255, 182, 193, 0.2);
+            border: 1px solid #FFE4E6;
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: zoom-in;
+        }
+
+        .photo-entry:hover {
+            transform: scale(1.03) rotate(0deg) !important;
+            z-index: 10;
+        }
+
+        /* Efek Selotip Washi */
+        .washi-tape {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 25px;
+            background: rgba(255, 192, 203, 0.5);
+            backdrop-filter: blur(2px);
+            border-left: 2px dashed rgba(255,255,255,0.5);
+            border-right: 2px dashed rgba(255,255,255,0.5);
+            z-index: 5;
+        }
+
+        /* Ribbon / Pita Coquette */
+        .ribbon-icon {
+            width: 40px;
+            height: auto;
+            display: block;
+            margin: 0 auto 10px;
+        }
+
+        /* Lightbox / Zoom */
+        #zoom-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(255, 245, 247, 0.98);
+            z-index: 9999;
+            padding: 20px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #zoom-img {
+            max-width: 95%;
+            max-height: 80vh;
+            border: 8px solid white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-radius: 4px;
+        }
+
+        .iphone-emoji {
+            width: 44px;
+            height: 44px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        /* Section Konser */
+        .concert-section {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 30px;
+            padding: 40px;
+            border: 2px dashed #FFD1DC;
+            margin-bottom: 80px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Zoom Modal -->
+    <div id="zoom-overlay" onclick="this.style.display='none'">
+        <img id="zoom-img" src="">
+        <p class="mt-6 font-bold text-pink-400">Pencet dimana saja untuk tutup ✨</p>
+    </div>
+
+    <div class="scrapbook-container">
+        
+        <!-- Header -->
+        <header class="text-center">
+            <img src="https://em-content.zobj.net/source/apple/354/ribbon_1f380.png" class="w-16 mx-auto mb-4" alt="bow">
+            <div class="journal-title">
+                <h1 class="text-3xl md:text-5xl font-bold text-pink-500">
+                    Our Secured Journey 🌸
+                </h1>
+            </div>
+            <p class="font-cute text-xl text-pink-400 mt-2 italic">A collection of secured tix memories by flowieefasy.id</p>
+        </header>
+
+        <!-- KATEGORI KONSER: AESPA (Hanya 1 Foto - Posisi Tengah) -->
+        <div class="concert-section mt-10">
+            <div class="flex items-center justify-center gap-3 mb-10 text-center">
+                <img src="gambar/gambar_2.jpg" class="iphone-emoji" alt="ticket">
+                <h2 class="text-2xl font-bold tracking-tight text-pink-600 uppercase">2024 Aespa Live Tour - Synk: Parallel In Jakarta</h2>
+                <img src="https://em-content.zobj.net/source/apple/354/cherry-blossom_1f338.png" class="iphone-emoji" alt="flower">
+            </div>
+
+            <!-- Bagian ini diubah jadi Flex supaya foto otomatis ke tengah -->
+            <div class="flex justify-center">
+                <!-- Foto Entry -->
+                <div class="photo-entry" style="transform: rotate(-2deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1pgw3C_4qiq4T6FWhDNYvGjyz9Xpl1FAn')">
+                    <div class="washi-tape"></div>
+                    <img src="gambar/gambar_3.jpeg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[20px] font-bold text-pink-300">secured : 
+🎫 1 VIP B (standing) - Weverse ✨</span>
+                    </div>
+                </div>
+                <!-- Kotak kosong/placeholder yang tadi sudah dihapus dari sini -->
+            </div>
+        </div>
+
+        <!-- KATEGORI KONSER: Zerobaseone (Hanya 1 Foto - Posisi Tengah) -->
+        <div class="concert-section mt-10">
+            <div class="flex items-center justify-center gap-3 mb-10 text-center">
+                <img src="gambar/gambar_4.jpg" class="iphone-emoji" alt="ticket">
+                <h2 class="text-2xl font-bold tracking-tight text-pink-600 uppercase">2024 Zerobaseone The First Tour [timeless World] In Jakarta </h2>
+                <img src="https://em-content.zobj.net/source/apple/354/cherry-blossom_1f338.png" class="iphone-emoji" alt="flower">
+            </div>
+
+            <!-- Bagian ini diubah jadi Flex supaya foto otomatis ke tengah -->
+            <div class="flex justify-center">
+                <!-- Foto Entry -->
+                <div class="photo-entry" style="transform: rotate(-2deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1U7TatiomLfkmiF6gto-L1erf0N-rJBLx')">
+                    <div class="washi-tape"></div>
+                    <img src="gambar/gambar_5.jpeg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[15px] font-bold text-pink-300">secured : 
+🎫 1 tix Pink A - Soundcheck Global Official Fanclub - Weverse ✨</span>
+                    </div>
+                </div>
+                <!-- Kotak kosong/placeholder yang tadi sudah dihapus dari sini -->
+            </div>
+        </div>
+
+        <!-- KATEGORI KONSER: Day6 (Hanya 1 Foto - Posisi Tengah) -->
+        <div class="concert-section mt-10">
+            <div class="flex items-center justify-center gap-3 mb-10 text-center">
+                <img src="gambar/gambar_6.jpg" class="iphone-emoji" alt="ticket">
+                <h2 class="text-2xl font-bold tracking-tight text-pink-600 uppercase">2024 Day6 3rd World Tour <forever young> In Indonesia - Jakarta </h2>
+                <img src="https://em-content.zobj.net/source/apple/354/cherry-blossom_1f338.png" class="iphone-emoji" alt="flower">
+            </div>
+
+            <!-- Bagian ini diubah jadi Flex supaya foto otomatis ke tengah -->
+            <div class="flex justify-center">
+                <!-- Foto Entry -->
+                <div class="photo-entry" style="transform: rotate(-2deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1cVgX8gKSFNZeuNJhnI9C1ScV5orJFdgo')">
+                    <div class="washi-tape"></div>
+                    <img src="gambar/gambar_7.jpeg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[20px] font-bold text-pink-300">secured : 
+🎫 1 tix Blue B ✨</span>
+                    </div>
+                </div>
+                <!-- Kotak kosong/placeholder yang tadi sudah dihapus dari sini -->
+            </div>
+        </div>
+
+        <!-- KATEGORI KONSER: Day6 (Hanya 1 Foto - Posisi Tengah) -->
+        <div class="concert-section mt-10">
+            <div class="flex items-center justify-center gap-3 mb-10 text-center">
+                <img src="gambar/gambar_8.jpg" class="iphone-emoji" alt="ticket">
+                <h2 class="text-2xl font-bold tracking-tight text-pink-600 uppercase">2024 Day6 3rd World Tour <forever young> In Indonesia - Surabaya </h2>
+                <img src="https://em-content.zobj.net/source/apple/354/cherry-blossom_1f338.png" class="iphone-emoji" alt="flower">
+            </div>
+
+            <!-- Bagian ini diubah jadi Flex supaya foto otomatis ke tengah -->
+            <div class="flex justify-center">
+                <!-- Foto Entry -->
+                <div class="photo-entry" style="transform: rotate(-2deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1uz94N__K2s1NfbdYOH6hxiOtDWH4BokI')">
+                    <div class="washi-tape"></div>
+                    <img src="gambar/gambar_9.jpeg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[20px] font-bold text-pink-300">secured : 
+🎫 1 tix Blue  ✨</span>
+                    </div>
+                </div>
+                <!-- Kotak kosong/placeholder yang tadi sudah dihapus dari sini -->
+            </div>
+        </div>
+
+        <!-- KATEGORI KONSER: Stray Kids (Hanya 1 Foto - Posisi Tengah) -->
+        <div class="concert-section mt-10">
+            <div class="flex items-center justify-center gap-3 mb-10 text-center">
+                <img src="gambar/gambar_10.jpg" class="iphone-emoji" alt="ticket">
+                <h2 class="text-2xl font-bold tracking-tight text-pink-600 uppercase">2024 Stray Kids World Tour -dominate Jakarta-
+ </h2>
+                <img src="https://em-content.zobj.net/source/apple/354/cherry-blossom_1f338.png" class="iphone-emoji" alt="flower">
+            </div>
+
+            <!-- Bagian ini diubah jadi Flex supaya foto otomatis ke tengah -->
+            <div class="flex justify-center">
+                <!-- Foto Entry -->
+                <div class="photo-entry" style="transform: rotate(-2deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1NpsrcfN7vAfdcoSFNRd-3GzmB7NKO5mU')">
+                    <div class="washi-tape"></div>
+                    <img src="gambar/gambar_11.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[15px] font-bold text-pink-300">secured :
+🎫 1 tix VIP B General Sale ✨</span>
+                    </div>
+                </div>
+                <!-- Kotak kosong/placeholder yang tadi sudah dihapus dari sini -->
+            </div>
+        </div>
+
+         <!-- KATEGORI KONSER: Niki (Hanya 1 Foto - Posisi Tengah) -->
+        <div class="concert-section mt-10">
+            <div class="flex items-center justify-center gap-3 mb-10 text-center">
+                <img src="gambar/gambar_12.jpg" class="iphone-emoji" alt="ticket">
+                <h2 class="text-2xl font-bold tracking-tight text-pink-600 uppercase">2025 Niki: Buzz World Tour Jakarta (bca Presale)
+
+ </h2>
+                <img src="https://em-content.zobj.net/source/apple/354/cherry-blossom_1f338.png" class="iphone-emoji" alt="flower">
+            </div>
+
+            <!-- Bagian ini diubah jadi Flex supaya foto otomatis ke tengah -->
+            <div class="flex justify-center">
+                <!-- Foto Entry -->
+                <div class="photo-entry" style="transform: rotate(-2deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1JpF5oDfQwh-3SnDFsgrYkcVP7dn_HPR9')">
+                    <div class="washi-tape"></div>
+                    <img src="gambar/gambar_13.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[15px] font-bold text-pink-300">secured :
+🎫 1 tix Ultimate VIP Package - Bca Presale ✨</span>
+                    </div>
+                </div>
+                <!-- Kotak kosong/placeholder yang tadi sudah dihapus dari sini -->
+            </div>
+        </div>
+
+        <!-- KATEGORI KONSER: NCT (Hanya 1 Foto - Posisi Tengah) -->
+        <div class="concert-section mt-10">
+            <div class="flex items-center justify-center gap-3 mb-10 text-center">
+                <img src="gambar/gambar_14.jpg" class="iphone-emoji" alt="ticket">
+                <h2 class="text-2xl font-bold tracking-tight text-pink-600 uppercase">2025 NCT 127 4TH TOUR 'NEO CITY JAKARTA - THE MOMENTUM
+ </h2>
+                <img src="https://em-content.zobj.net/source/apple/354/cherry-blossom_1f338.png" class="iphone-emoji" alt="flower">
+            </div>
+
+            <!-- Bagian ini diubah jadi Flex supaya foto otomatis ke tengah -->
+            <div class="flex justify-center">
+                <!-- Foto Entry -->
+                <div class="photo-entry" style="transform: rotate(-2deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/15havk2ldJx5FVxNl8_cY0AEXMpuMCkb2')">
+                    <div class="washi-tape"></div>
+                    <img src="gambar/gambar_15.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[20px] font-bold text-pink-300">secured :
+🎫 2 tix CAT 1- Day 2 ✨</span>
+                    </div>
+                </div>
+                <!-- Kotak kosong/placeholder yang tadi sudah dihapus dari sini -->
+            </div>
+        </div>
+
+        <!-- KATEGORI KONSER: Day6 (Hanya 1 Foto - Posisi Tengah) -->
+        <div class="concert-section mt-10">
+            <div class="flex items-center justify-center gap-3 mb-10 text-center">
+                <img src="gambar/gambar_16.jpg" class="iphone-emoji" alt="ticket">
+                <h2 class="text-2xl font-bold tracking-tight text-pink-600 uppercase">2025 Day6 3RD WORLD TOUR <FOREVER YOUNG> In JAKARTA </h2>
+                <img src="https://em-content.zobj.net/source/apple/354/cherry-blossom_1f338.png" class="iphone-emoji" alt="flower">
+            </div>
+
+            <!-- Bagian ini diubah jadi Flex supaya foto otomatis ke tengah -->
+            <div class="flex justify-center">
+                <!-- Foto Entry -->
+                <div class="photo-entry" style="transform: rotate(-2deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1HbDh4SJAVpGf4LXMQWNWyIu56HgtOKxe')">
+                    <div class="washi-tape"></div>
+                    <img src="gambar/gambar_17.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-18px] font-bold text-pink-300">secured : 
+🎫 1 tix YELLOW - SOUTH  ✨</span>
+                    </div>
+                </div>
+                <!-- Kotak kosong/placeholder yang tadi sudah dihapus dari sini -->
+            </div>
+        </div>
+
+        <!-- KATEGORI KONSER 1 -->
+        <div class="concert-section mt-10">
+            <div class="flex items-center justify-center gap-3 mb-10">
+                <img src="gambar/gambar_18.jpg" class="iphone-emoji" alt="ticket">
+                <h2 class="text-2xl font-bold tracking-tight text-pink-600 uppercase">2025 J-Hope Tour 'HOPE ON THE STAGE' In JAKARTA - DAY 1 & 2
+</h2>
+                <img src="https://em-content.zobj.net/source/apple/354/cherry-blossom_1f338.png" class="iphone-emoji" alt="flower">
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Foto Entry -->
+                <div class="photo-entry" style="transform: rotate(-3deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1huR8mCYbUUybK1uz4eDoIvE-jj1Jb1OR')">
+                    <div class="washi-tape"></div>
+                    <img src="gambar/gambar_19.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[12px] font-bold text-pink-300">secured :
+🎫 1 tix CAT 2 - GENERAL SALE DAY 1 ✨</span>
+                    </div>
+                </div>
+
+                <div class="photo-entry" style="transform: rotate(2deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1yVlJvY9CrUAAtia_gpptyGtm37HTXuxU')">
+                    <div class="washi-tape" style="background: rgba(224, 242, 254, 0.6)"></div>
+                    <img src="gambar/gambar_20.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[12px] font-bold text-pink-300">secured :
+🎫 1 tix CAT 1 - WEVERSE DAY 2 🎀</span>
+                    </div>
+                </div>
+
+                <div class="photo-entry" style="transform: rotate(4deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1Vcx-OI4kNu8hLcupMXj7ZnNVBTg1xSHN')">
+                    <div class="washi-tape" style="background: rgba(254, 249, 195, 0.6)"></div>
+                    <img src="gambar/gambar_21.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[12px] font-bold text-pink-300">secured :
+🎫 1 tix CAT 3A - GENERAL SALE DAY 2 🎀</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <!-- KATEGORI KONSER: Baby Monster (Hanya 1 Foto - Posisi Tengah) -->
+        <div class="concert-section mt-10">
+            <div class="flex items-center justify-center gap-3 mb-10 text-center">
+                <img src="gambar/gambar_22.jpg" class="iphone-emoji" alt="ticket">
+                <h2 class="text-2xl font-bold tracking-tight text-pink-600 uppercase">2025 Baby Monster 1st World Tour -Hello Monster- In Jakarta
+ </h2>
+                <img src="https://em-content.zobj.net/source/apple/354/cherry-blossom_1f338.png" class="iphone-emoji" alt="flower">
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Foto Entry -->
+                <div class="photo-entry" style="transform: rotate(-3deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1zhCWUggrUA9jr4qAG1WfomlkgCF4kgfC')">
+                    <div class="washi-tape"></div>
+                    <img src="gambar/gambar_23.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[12px] font-bold text-pink-300">secured :
+🎫 1 tix CAT 3A - GENERAL ON SALE ✨</span>
+                    </div>
+                </div>
+
+                <div class="photo-entry" style="transform: rotate(4deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1QF-TZ9cvEIY53Y5yf1w_ID91MrCyqRni')">
+                    <div class="washi-tape" style="background: rgba(254, 249, 195, 0.6)"></div>
+                    <img src="gambar/gambar_25.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[12px] font-bold text-pink-300">secured :
+🎫 1 tix BLUE - GENERAL ON SALE 🎀</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- KATEGORI KONSER: BLACKPINK (Hanya 1 Foto - Posisi Tengah) -->
+        <div class="concert-section mt-10">
+            <div class="flex items-center justify-center gap-3 mb-10 text-center">
+                <img src="gambar/gambar_24.jpg" class="iphone-emoji" alt="ticket">
+                <h2 class="text-2xl font-bold tracking-tight text-pink-600 uppercase">2025 BLACKPINK WORLD TOUR -DEADLINE- IN  JAKARTA & SINGAPORE  </h2>
+                <img src="https://em-content.zobj.net/source/apple/354/cherry-blossom_1f338.png" class="iphone-emoji" alt="flower">
+            </div>
+
+            <!-- Bagian ini diubah jadi Flex supaya foto otomatis ke tengah -->
+            <div class="flex justify-center">
+                <!-- Foto Entry -->
+                <div class="photo-entry" style="transform: rotate(-2deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1AdAQJgXGHVB8vOjEmJIwJ-jol7BFfeBN')">
+                    <div class="washi-tape"></div>
+                    <img src="gambar/gambar_27.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-18px] font-bold text-pink-300">secured : 
+🎫 2 tix BLINK PACKAGE (SEATING) - GENERAL SALE In JAKARTA ✨
+🎫 1 tix CAT 3 - Weverse Presale In SINGAPORE ✨
+🎫 1 tix CAT 2 - VISA PRESALE In SINGAPORE  ✨</span>
+                    </div>
+                </div>
+                <!-- Kotak kosong/placeholder yang tadi sudah dihapus dari sini -->
+            </div>
+        </div>
+
+        <!-- KATEGORI KONSER 1 -->
+        <div class="concert-section mt-10">
+            <div class="flex items-center justify-center gap-3 mb-10">
+                <img src="gambar/gambar_26" class="iphone-emoji" alt="ticket">
+                <h2 class="text-2xl font-bold tracking-tight text-pink-600 uppercase">2025 BLACKPINK WORLD TOUR -DEADLINE- In JAKARTA
+</h2>
+                <img src="https://em-content.zobj.net/source/apple/354/cherry-blossom_1f338.png" class="iphone-emoji" alt="flower">
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Foto Entry -->
+                <div class="photo-entry" style="transform: rotate(-3deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1yKZ3ne5TwkPfHHZVo-UyJxbqVazTvdrZ')">
+                    <div class="washi-tape"></div>
+                    <img src="gambar/gambar_28.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[12px] font-bold text-pink-300">secured :
+🎫 1 tix CAT 1 (SEATING) - Visa Presale DAY 1 ✨</span>
+                    </div>
+                </div>
+
+                <div class="photo-entry" style="transform: rotate(2deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1dV8DyP2uFtK19-wjwAYpwI7qirLyHqxc')">
+                    <div class="washi-tape" style="background: rgba(224, 242, 254, 0.6)"></div>
+                    <img src="gambar/gambar_29.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[12px] font-bold text-pink-300">secured :
+🎫 1 Tix CAT 4B (SEATING) - Visa Presale DAY 2 ✨</span>
+                    </div>
+                </div>
+
+                <div class="photo-entry" style="transform: rotate(4deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1lyVdWkBlQW3oAwrGHnz5VZusZtM6wRjV')">
+                    <div class="washi-tape" style="background: rgba(254, 249, 195, 0.6)"></div>
+                    <img src="gambar/gambar_30.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[12px] font-bold text-pink-300">secured :
+🎫 1 tix RESTRICTED VIEW (SEATING) - Visa Presale DAY 2 🎀</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- KATEGORI KONSER: NCT (Hanya 1 Foto - Posisi Tengah) -->
+        <div class="concert-section mt-10">
+            <div class="flex items-center justify-center gap-3 mb-10 text-center">
+                <img src="gambar/gambar_31.jpg" class="iphone-emoji" alt="ticket">
+                <h2 class="text-2xl font-bold tracking-tight text-pink-600 uppercase">2025 NCT DREAM TOUR -THE DREAM SHOW 4 : DREAM THE FUTURE- In JAKARTA
+ </h2>
+                <img src="https://em-content.zobj.net/source/apple/354/cherry-blossom_1f338.png" class="iphone-emoji" alt="flower">
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Foto Entry -->
+                <div class="photo-entry" style="transform: rotate(-3deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1CWZlI11zBn-iXZLQKD-a-9pt6oS3AngM')">
+                    <div class="washi-tape"></div>
+                    <img src="gambar/gambar_32.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[12px] font-bold text-pink-300">secured : 
+🎫 2 tix CAT 4 DYANDRA PRESALE - DAY 1 ✨</span>
+                    </div>
+                </div>
+
+                <div class="photo-entry" style="transform: rotate(4deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/101JW3Tw4okjsbXBGPBTfjfucwjE5ph8J')">
+                    <div class="washi-tape" style="background: rgba(254, 249, 195, 0.6)"></div>
+                    <img src="gambar/gambar_33.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[12px] font-bold text-pink-300">secured : 
+🎫 1 tix CAT 3 GENERAL SALE 🎀</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- KATEGORI KONSER: SUPER JUNIOR (Hanya 1 Foto - Posisi Tengah) -->
+        <div class="concert-section mt-10">
+            <div class="flex items-center justify-center gap-3 mb-10 text-center">
+                <img src="gambar/gambar_34.jpg" class="iphone-emoji" alt="ticket">
+                <h2 class="text-2xl font-bold tracking-tight text-pink-600 uppercase">2025 SUPER JUNIOR 20th Anniversary TOUR -SUPER SHOW 10- In JAKARTA 
+</h2>
+                <img src="https://em-content.zobj.net/source/apple/354/cherry-blossom_1f338.png" class="iphone-emoji" alt="flower">
+            </div>
+
+            <!-- Bagian ini diubah jadi Flex supaya foto otomatis ke tengah -->
+            <div class="flex justify-center">
+                <!-- Foto Entry -->
+                <div class="photo-entry" style="transform: rotate(-2deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1MFu_zmI_xMc_vkNUF06t_QerRGukZi3r')">
+                    <div class="washi-tape"></div>
+                    <img src="gambar/gambar_35.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[20px] font-bold text-pink-300">secured : 
+🎫 1 tix CAT 4A (STANDING) - GENERALE SALE ✨</span>
+                    </div>
+                </div>
+                <!-- Kotak kosong/placeholder yang tadi sudah dihapus dari sini -->
+            </div>
+        </div>
+
+        <!-- KATEGORI KONSER: ZEROBASEONE (Hanya 1 Foto - Posisi Tengah) -->
+        <div class="concert-section mt-10">
+            <div class="flex items-center justify-center gap-3 mb-10 text-center">
+                <img src="gambar/gambar_36.jpg" class="iphone-emoji" alt="ticket">
+                <h2 class="text-2xl font-bold tracking-tight text-pink-600 uppercase">2025 ZEROBASEONE WORLD TOUR [HERE&NOW] IN SINGAPORE</h2>
+                <img src="https://em-content.zobj.net/source/apple/354/cherry-blossom_1f338.png" class="iphone-emoji" alt="flower">
+            </div>
+
+            <!-- Bagian ini diubah jadi Flex supaya foto otomatis ke tengah -->
+            <div class="flex justify-center">
+                <!-- Foto Entry -->
+                <div class="photo-entry" style="transform: rotate(-2deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1PJietqX09gPrueIkmMYnZi_5_44bivaZ')">
+                    <div class="washi-tape"></div>
+                    <img src="gambar/gambar_37.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[20px] font-bold text-pink-300">secured :
+🎫 1 tix STANDING PEN C - Presale Membership ✨</span>
+                    </div>
+                </div>
+                <!-- Kotak kosong/placeholder yang tadi sudah dihapus dari sini -->
+            </div>
+        </div>
+
+        <!-- KATEGORI KONSER 1 -->
+        <div class="concert-section mt-10">
+            <div class="flex items-center justify-center gap-3 mb-10">
+                <img src="gambar/gambar_38" class="iphone-emoji" alt="ticket">
+                <h2 class="text-2xl font-bold tracking-tight text-pink-600 uppercase">2025 LIVIN FEST MUSIC - SECTOR K IN JAKARTA
+</h2>
+                <img src="https://em-content.zobj.net/source/apple/354/cherry-blossom_1f338.png" class="iphone-emoji" alt="flower">
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Foto Entry -->
+                <div class="photo-entry" style="transform: rotate(-3deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1QLJfR9fg3spixC3A16mE9h_msIWLtAas')">
+                    <div class="washi-tape"></div>
+                    <img src="gambar/gambar_39.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[12px] font-bold text-pink-300">secured :
+🎫 1 tix LIVIN B DAY 2 ✨</span>
+                    </div>
+                </div>
+
+                <div class="photo-entry" style="transform: rotate(2deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1ghRwxhmgIM9u3GsMmZ98H2Hg9HCOlniS')">
+                    <div class="washi-tape" style="background: rgba(224, 242, 254, 0.6)"></div>
+                    <img src="gambar/gambar_40.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[12px] font-bold text-pink-300">secured :
+🎫 1 tix GREEN B DAY 2 ✨</span>
+                    </div>
+                </div>
+
+                <div class="photo-entry" style="transform: rotate(4deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1xnd_ISvhtz2KRX2yRa-hw25QV_UrAp7B')">
+                    <div class="washi-tape" style="background: rgba(254, 249, 195, 0.6)"></div>
+                    <img src="gambar/gambar_41.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[12px] font-bold text-pink-300">secured :
+🎫 1 tix PURPLE A DAY 1 🎀</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- KATEGORI KONSER: Treasure (Hanya 1 Foto - Posisi Tengah) -->
+        <div class="concert-section mt-10">
+            <div class="flex items-center justify-center gap-3 mb-10 text-center">
+                <img src="gambar/gambar_42.jpg" class="iphone-emoji" alt="ticket">
+                <h2 class="text-2xl font-bold tracking-tight text-pink-600 uppercase">2026 TREASURE TOUR -PULSE ON- IN JAKARTA DAY 2</h2>
+                <img src="https://em-content.zobj.net/source/apple/354/cherry-blossom_1f338.png" class="iphone-emoji" alt="flower">
+            </div>
+
+            <!-- Bagian ini diubah jadi Flex supaya foto otomatis ke tengah -->
+            <div class="flex justify-center">
+                <!-- Foto Entry -->
+                <div class="photo-entry" style="transform: rotate(-2deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1ZgbMpgZJRCnxcbKtDAdH7OFVxxbM-Hxl')">
+                    <div class="washi-tape"></div>
+                    <img src="gambar/gambar_43.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[20px] font-bold text-pink-300">secured : 
+🎫 1 tix CAT 1 C Seating - Allo Bank Presale ✨</span>
+                    </div>
+                </div>
+                <!-- Kotak kosong/placeholder yang tadi sudah dihapus dari sini -->
+            </div>
+        </div>
+
+        <!-- KATEGORI KONSER: Seventeen (Hanya 1 Foto - Posisi Tengah) -->
+        <div class="concert-section mt-10">
+            <div class="flex items-center justify-center gap-3 mb-10 text-center">
+                <img src="gambar/gambar_45.jpg" class="iphone-emoji" alt="ticket">
+                <h2 class="text-2xl font-bold tracking-tight text-pink-600 uppercase">2026 SEVENTEEN : World Tour New_ In Bangkok</h2>
+                <img src="https://em-content.zobj.net/source/apple/354/cherry-blossom_1f338.png" class="iphone-emoji" alt="flower">
+            </div>
+
+            <!-- Bagian ini diubah jadi Flex supaya foto otomatis ke tengah -->
+            <div class="flex justify-center">
+                <!-- Foto Entry -->
+                <div class="photo-entry" style="transform: rotate(-2deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1UpeQoz3GWOc4gbBPamAdNu0-tfWb3vdR')">
+                    <div class="washi-tape"></div>
+                    <img src="gambar/gambar_44.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[20px] font-bold text-pink-300">secured:
+🎫 1 tix VIP BL - Weverse Membership ✨</span>
+                    </div>
+                </div>
+                <!-- Kotak kosong/placeholder yang tadi sudah dihapus dari sini -->
+            </div>
+        </div>
+
+        <!-- KATEGORI KONSER 1 -->
+        <div class="concert-section mt-10">
+            <div class="flex items-center justify-center gap-3 mb-10">
+                <img src="gambar/gambar_46.jpg" class="iphone-emoji" alt="ticket">
+                <h2 class="text-2xl font-bold tracking-tight text-pink-600 uppercase">2026 ONE OK ROCK DETOX ASIA TOUR in JAKARTA
+</h2>
+                <img src="https://em-content.zobj.net/source/apple/354/cherry-blossom_1f338.png" class="iphone-emoji" alt="flower">
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Foto Entry -->
+                <div class="photo-entry" style="transform: rotate(-3deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/15TXRgg0lwcPY0gJfMKFZ8gv4rMGmmPSl')">
+                    <div class="washi-tape"></div>
+                    <img src="gambar/gambar_47.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[12px] font-bold text-pink-300">secured : 
+🎫 1 tix FESTIVAL ✨</span>
+                    </div>
+                </div>
+
+                <div class="photo-entry" style="transform: rotate(2deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1LTmW3h_X3cc8EiPHd74F0yrR0JqM03eZ')">
+                    <div class="washi-tape" style="background: rgba(224, 242, 254, 0.6)"></div>
+                    <img src="gambar/gambar_48.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[12px] font-bold text-pink-300">secured : 
+🎫 1 tix cat 4 A ✨</span>
+                    </div>
+                </div>
+
+                <div class="photo-entry" style="transform: rotate(4deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1EluINDNXoRBUv3l5KlWiRlyLxXxOJ-0i')">
+                    <div class="washi-tape" style="background: rgba(254, 249, 195, 0.6)"></div>
+                    <img src="gambar/gambar_49.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[12px] font-bold text-pink-300">secured : 
+🎫 1 tix cat 2 🎀</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- KATEGORI KONSER: NCT (Hanya 1 Foto - Posisi Tengah) -->
+        <div class="concert-section mt-10">
+            <div class="flex items-center justify-center gap-3 mb-10 text-center">
+                <img src="gambar/gambar_50.jpg" class="iphone-emoji" alt="ticket">
+                <h2 class="text-2xl font-bold tracking-tight text-pink-600 uppercase">2026 MY CHEMICAL ROMANCE in JAKARTA
+ </h2>
+                <img src="https://em-content.zobj.net/source/apple/354/cherry-blossom_1f338.png" class="iphone-emoji" alt="flower">
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Foto Entry -->
+                <div class="photo-entry" style="transform: rotate(-3deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/17OlCssv89Y0slBDEB7p8idorkSS5Nl9v')">
+                    <div class="washi-tape"></div>
+                    <img src="gambar/gambar_51.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[12px] font-bold text-pink-300">secured : 
+🎫 1 tix FESTIVAL ✨</span>
+                    </div>
+                </div>
+
+                <div class="photo-entry" style="transform: rotate(4deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1nVR2UjP8XA0_tooMAPJBVbw22JVHAegK')">
+                    <div class="washi-tape" style="background: rgba(254, 249, 195, 0.6)"></div>
+                    <img src="gambar/gambar_52.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[12px] font-bold text-pink-300">secured : 
+🎫 1 tix cat 2 center 🎀</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- KATEGORI KONSER: Seventeen (Hanya 1 Foto - Posisi Tengah) -->
+        <div class="concert-section mt-10">
+            <div class="flex items-center justify-center gap-3 mb-10 text-center">
+                <img src="gambar/gambar_54.jpg" class="iphone-emoji" alt="ticket">
+                <h2 class="text-2xl font-bold tracking-tight text-pink-600 uppercase">2026 KIM SEONHO FANMEETING -LOVE FACTORY- in JAKARTA</h2>
+                <img src="https://em-content.zobj.net/source/apple/354/cherry-blossom_1f338.png" class="iphone-emoji" alt="flower">
+            </div>
+
+            <!-- Bagian ini diubah jadi Flex supaya foto otomatis ke tengah -->
+            <div class="flex justify-center">
+                <!-- Foto Entry -->
+                <div class="photo-entry" style="transform: rotate(-2deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1Q_Qe_K4Fhb75ZdJ-HxDZKZb90N2y7Jvb')">
+                    <div class="washi-tape"></div>
+                    <img src="gambar/gambar_53.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[20px] font-bold text-pink-300">secured : 
+🎫 1 tix LOVE DIRECTOR ✨</span>
+                    </div>
+                </div>
+                <!-- Kotak kosong/placeholder yang tadi sudah dihapus dari sini -->
+            </div>
+        </div>
+
+        <!-- KATEGORI KONSER: NCT (Hanya 1 Foto - Posisi Tengah) -->
+        <div class="concert-section mt-10">
+            <div class="flex items-center justify-center gap-3 mb-10 text-center">
+                <img src="gambar/gambar_55.jpg" class="iphone-emoji" alt="ticket">
+                <h2 class="text-2xl font-bold tracking-tight text-pink-600 uppercase">2026 LANY : soft world tour in SINGAPORE
+ </h2>
+                <img src="https://em-content.zobj.net/source/apple/354/cherry-blossom_1f338.png" class="iphone-emoji" alt="flower">
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Foto Entry -->
+                <div class="photo-entry" style="transform: rotate(-3deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/18SczazyOThQgdol1l7NYQUVhAGEHuSzJ')">
+                    <div class="washi-tape"></div>
+                    <img src="gambar/gambar_56.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[12px] font-bold text-pink-300">secured :
+🎫 2 tix CAT 1 STANDING PEN A ✨</span>
+                    </div>
+                </div>
+
+                <div class="photo-entry" style="transform: rotate(4deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/17xI_g4-5iDsAhTgb32Qmxr578ocmjtXn')">
+                    <div class="washi-tape" style="background: rgba(254, 249, 195, 0.6)"></div>
+                    <img src="gambar/gambar_57.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[12px] font-bold text-pink-300">secured :
+🎫 2 tix The Last Forever Fan Experience STANDING PEN B 🎀</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- KATEGORI KONSER: Seventeen (Hanya 1 Foto - Posisi Tengah) -->
+        <div class="concert-section mt-10">
+            <div class="flex items-center justify-center gap-3 mb-10 text-center">
+                <img src="gambar/gambar_58.jpg" class="iphone-emoji" alt="ticket">
+                <h2 class="text-2xl font-bold tracking-tight text-pink-600 uppercase">2026 LANY : soft world tour in KUALA LUMPUR</h2>
+                <img src="https://em-content.zobj.net/source/apple/354/cherry-blossom_1f338.png" class="iphone-emoji" alt="flower">
+            </div>
+
+            <!-- Bagian ini diubah jadi Flex supaya foto otomatis ke tengah -->
+            <div class="flex justify-center">
+                <!-- Foto Entry -->
+                <div class="photo-entry" style="transform: rotate(-2deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/13-m_PBLk6_svZj9ADf5JUh_jz4oyZY1G')">
+                    <div class="washi-tape"></div>
+                    <img src="gambar/gambar_59.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[20px] font-bold text-pink-300">secured :
+🎫 1 tix STANDING ZONE Artist Presale ✨</span>
+                    </div>
+                </div>
+                <!-- Kotak kosong/placeholder yang tadi sudah dihapus dari sini -->
+            </div>
+        </div>
+
+        <!-- KATEGORI KONSER: Seventeen (Hanya 1 Foto - Posisi Tengah) -->
+        <div class="concert-section mt-10">
+            <div class="flex items-center justify-center gap-3 mb-10 text-center">
+                <img src="gambar/gambar_60.jpg" class="iphone-emoji" alt="ticket">
+                <h2 class="text-2xl font-bold tracking-tight text-pink-600 uppercase">2026 ITZY 3RD WORLD TOUR -TUNNEL VISION- in BANGKOK
+</h2>
+                <img src="https://em-content.zobj.net/source/apple/354/cherry-blossom_1f338.png" class="iphone-emoji" alt="flower">
+            </div>
+
+            <!-- Bagian ini diubah jadi Flex supaya foto otomatis ke tengah -->
+            <div class="flex justify-center">
+                <!-- Foto Entry -->
+                <div class="photo-entry" style="transform: rotate(-2deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1m4rtB5NL8vu_5GwRp-hi32WbOIhhdI-x')">
+                    <div class="washi-tape"></div>
+                    <img src="gambar/gambar_61.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[20px] font-bold text-pink-300">secured : 
+🎫 1 tix SJ Seating - Presale Mastercard ✨</span>
+                    </div>
+                </div>
+                <!-- Kotak kosong/placeholder yang tadi sudah dihapus dari sini -->
+            </div>
+        </div>
+
+        <!-- KATEGORI KONSER 1 -->
+        <div class="concert-section mt-10">
+            <div class="flex items-center justify-center gap-3 mb-10">
+                <img src="gambar/gambar_66.jpg" class="iphone-emoji" alt="ticket">
+                <h2 class="text-2xl font-bold tracking-tight text-pink-600 uppercase">2026 EXO PLANET #6 - EXhOrizon in BANGKOK</h2>
+                <img src="https://em-content.zobj.net/source/apple/354/cherry-blossom_1f338.png" class="iphone-emoji" alt="flower">
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Foto Entry -->
+                <div class="photo-entry" style="transform: rotate(-3deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1Oz3MSUH0AOL-xcRE8d8yhggDI0RjKiB3')">
+                    <div class="washi-tape"></div>
+                    <img src="gambar/gambar_62.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[15px] font-bold text-pink-300">secured : 
+🎫 1 tix VIP SK — EXO-L Membership ✨</span>
+                    </div>
+                </div>
+
+                <div class="photo-entry" style="transform: rotate(2deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1hmPd1jgAkGgWIZPWjWZbuji3tZ8K-KcJ')">
+                    <div class="washi-tape" style="background: rgba(224, 242, 254, 0.6)"></div>
+                    <img src="gambar/gambar_63.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[13px] font-bold text-pink-300">secured : 
+🎫 1 tix C — EXO-L Membership 🎀</span>
+                    </div>
+                </div>
+
+                <div class="photo-entry" style="transform: rotate(-1deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1Dkd2LpkQq6wZATtUHqbWbQb193IWUNdL')">
+                    <div class="washi-tape"></div>
+                    <img src="gambar/gambar_64.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[13px] font-bold text-pink-300">secured : 
+🎫 1 tix S — EXO-L Membership 🎀</span>
+                    </div>
+                </div>
+
+                <div class="photo-entry" style="transform: rotate(4deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1BrhAVMyAmCRxAeDV8uAygjDSMlwE7RSu')">
+                    <div class="washi-tape" style="background: rgba(254, 249, 195, 0.6)"></div>
+                    <img src="gambar/gambar_65.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[13px] font-bold text-pink-300">secured : 
+🎫 1 tix P — EXO-L Membership ✨</span>
+                    </div>
+                </div>
+                <!-- Kotak kosong/placeholder yang tadi sudah dihapus dari sini -->
+            </div>
+        </div>
+
+        <!-- KATEGORI KONSER: NCT (Hanya 1 Foto - Posisi Tengah) -->
+        <div class="concert-section mt-10">
+            <div class="flex items-center justify-center gap-3 mb-10 text-center">
+                <img src="gambar/gambar_69.jpg" class="iphone-emoji" alt="ticket">
+                <h2 class="text-2xl font-bold tracking-tight text-pink-600 uppercase">2026 F✦FOREVER 1st World Tour in Jakarta
+ </h2>
+                <img src="https://em-content.zobj.net/source/apple/354/cherry-blossom_1f338.png" class="iphone-emoji" alt="flower">
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Foto Entry -->
+                <div class="photo-entry" style="transform: rotate(-3deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1Jyro3BH2a-bU7rIe_vumFkMrolnyFY5k')">
+                    <div class="washi-tape"></div>
+                    <img src="gambar/gambar_67.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[12px] font-bold text-pink-300">secured : 
+🎫 2 tix Silver - Day 2 ✨</span>
+                    </div>
+                </div>
+
+                <div class="photo-entry" style="transform: rotate(4deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1489OdT5n7sla369-rxUx86Yhj7cpubJQ')">
+                    <div class="washi-tape" style="background: rgba(254, 249, 195, 0.6)"></div>
+                    <img src="gambar/gambar_68.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[13px] font-bold text-pink-300">secured : 
+🎫 1 tix Bronze Restricted View - Add show 🎀</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- KATEGORI KONSER 1 -->
+        <div class="concert-section mt-10">
+            <div class="flex items-center justify-center gap-3 mb-10">
+                <img src="gambar/gambar_73.jpg" class="iphone-emoji" alt="ticket">
+                <h2 class="text-2xl font-bold tracking-tight text-pink-600 uppercase">2026 Avenged Sevenfold Live in Jakarta
+</h2>
+                <img src="https://em-content.zobj.net/source/apple/354/cherry-blossom_1f338.png" class="iphone-emoji" alt="flower">
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Foto Entry -->
+                <div class="photo-entry" style="transform: rotate(-3deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1J5D3XUHnTV3NDaQhWnTRRZ1JlM4c0Rkr')">
+                    <div class="washi-tape"></div>
+                    <img src="gambar/gambar_70.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[12px] font-bold text-pink-300">secured : 
+🎫 1 tix Festival A - Deathbat Presale ✨</span>
+                    </div>
+                </div>
+
+                <div class="photo-entry" style="transform: rotate(2deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1Fa7SLCwhS-VY_j36I8hApSPMVICHvuXP')">
+                    <div class="washi-tape" style="background: rgba(224, 242, 254, 0.6)"></div>
+                    <img src="gambar/gambar_71.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[12px] font-bold text-pink-300">secured : 
+🎫 1 tix Festival A - Deathbat Presale ✨</span>
+                    </div>
+                </div>
+
+                <div class="photo-entry" style="transform: rotate(4deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1Hm2P8Wvu8U3fDnM4OebpieAbg66IEGVt')">
+                    <div class="washi-tape" style="background: rgba(254, 249, 195, 0.6)"></div>
+                    <img src="gambar/gambar_72.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[12px] font-bold text-pink-300">secured : 
+🎫 1 tix Festival B - General Sale 🎀</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- KATEGORI KONSER: Seventeen (Hanya 1 Foto - Posisi Tengah) -->
+        <div class="concert-section mt-10">
+            <div class="flex items-center justify-center gap-3 mb-10 text-center">
+                <img src="gambar/gambar_75.jpg" class="iphone-emoji" alt="ticket">
+                <h2 class="text-2xl font-bold tracking-tight text-pink-600 uppercase">2026 Allobank Festival In Jakarta</h2>
+                <img src="https://em-content.zobj.net/source/apple/354/cherry-blossom_1f338.png" class="iphone-emoji" alt="flower">
+            </div>
+
+            <!-- Bagian ini diubah jadi Flex supaya foto otomatis ke tengah -->
+            <div class="flex justify-center">
+                <!-- Foto Entry -->
+                <div class="photo-entry" style="transform: rotate(-2deg)" onclick="openZoom('https://lh3.googleusercontent.com/d/1SYrizpj69X9QRbZJ0ZhfnfmQkJjzARsF')">
+                    <div class="washi-tape"></div>
+                    <img src="gambar/gambar_74.jpg" alt="secured" class="w-full h-auto">
+                    <div class="mt-2 text-center">
+                        <span class="text-[20px] font-bold text-pink-300">secured :
+🎫 2 tix Yellow ✨</span>
+                    </div>
+                </div>
+                <!-- Kotak kosong/placeholder yang tadi sudah dihapus dari sini -->
+            </div>
+        </div>
+
+        <div class="text-center my-20">
+    <div class="continue-badge">
+        <div class="flex flex-col items-center gap-2">
+            <span class="text-2xl md:text-4xl text-pink-500 font-bold">To Be Continued...</span>
+            <div class="w-32 h-2 bg-pink-100 rounded-full overflow-hidden mt-2 border border-pink-200">
+                <div class="bg-pink-400 h-full w-2/3 animate-pulse"></div>
+            </div>
+        </div>
+    </div>
+    <p class="mt-6 text-pink-400 italic font-bold text-lg">
+        "Manifesting more secured tickets in the future!" 🎀🎫
+    </p>
+    <div class="flex justify-center gap-4 mt-6">
+        <img src="https://em-content.zobj.net/source/apple/354/crystal-ball_1f52e.png" class="w-10 h-10" alt="future">
+        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Animals%20and%20Nature/Four%20Leaf%20Clover.webp" class="w-10 h-10 opacity-60" alt="luck">
+    </div>
+</div>
+
+        <!-- Footer -->
+        <footer class="text-center pb-10">
+            <div class="flex justify-center gap-2 mb-4">
+                <img src="https://em-content.zobj.net/source/apple/354/heart-with-ribbon_1f49d.png" class="iphone-emoji" alt="love">
+            </div>
+            <p class="font-cute text-pink-400">Created with love fiaa by flowieefasy.id</p>
+        </footer>
+
+    </div>
+
+    <script>
+        function openZoom(src) {
+            const overlay = document.getElementById('zoom-overlay');
+            const img = document.getElementById('zoom-img');
+            img.src = src;
+            overlay.style.display = 'flex';
+        }
+
+        // Efek Kerlap Kerlip Simple saat scroll
+        window.addEventListener('scroll', () => {
+            if (Math.random() > 0.9) {
+                const s = document.createElement('div');
+                s.innerHTML = '✨';
+                s.style.position = 'fixed';
+                s.style.left = Math.random() * window.innerWidth + 'px';
+                s.style.top = Math.random() * window.innerHeight + 'px';
+                s.style.fontSize = '14px';
+                s.style.pointerEvents = 'none';
+                s.style.opacity = '0';
+                s.style.transition = 'all 1s';
+                document.body.appendChild(s);
+                
+                setTimeout(() => {
+                    s.style.opacity = '1';
+                    s.style.transform = 'translateY(-20px) scale(1.5)';
+                }, 50);
+
+                setTimeout(() => s.remove(), 1000);
+            }
+        });
+    </script>
+</body>
+</html>

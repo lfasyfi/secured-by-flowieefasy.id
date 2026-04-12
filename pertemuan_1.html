@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flowieefasy.id | Official Portal</title>
+    
+    <!-- Google Fonts: Gricel (jika tersedia) atau Grandiflora & Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['Montserrat', 'sans-serif'],
+                        cute: ['Grandiflora One', 'cursive']
+                    },
+                    colors: {
+                        pastel: {
+                            pink: '#FFD1DC',
+                            lilac: '#E8DFF5',
+                            peach: '#FFF1E6',
+                            rose: '#F48FB1'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background: linear-gradient(-45deg, #FFF1E6, #FFD1DC, #E8DFF5, #FFF);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Efek Berkilau (Shimmer) untuk Menu */
+        .shimmer-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .shimmer-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(255, 255, 255, 0.4),
+                transparent
+            );
+            transform: rotate(45deg);
+            transition: 0.6s;
+            pointer-events: none;
+        }
+
+        .shimmer-card:hover::before {
+            left: 100%;
+            top: 100%;
+        }
+
+        .shimmer-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            background: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 15px 30px rgba(244, 143, 177, 0.2);
+        }
+
+        /* Floating Animation */
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Sparkle Element */
+        .sparkle {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0;
+            animation: sparkleAnim 2s linear infinite;
+        }
+        @keyframes sparkleAnim {
+            0% { transform: scale(0) rotate(0deg); opacity: 0; }
+            50% { transform: scale(1) rotate(90deg); opacity: 1; }
+            100% { transform: scale(0) rotate(180deg); opacity: 0; }
+        }
+
+        /* Logo Pulse */
+        .logo-container {
+            position: relative;
+        }
+        .logo-container::after {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border-radius: 50%;
+            border: 2px solid #F48FB1;
+            opacity: 0.3;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(1.3); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="max-w-[420px] w-full relative z-10">
+        
+        <!-- Header Section -->
+        <header class="text-center mb-10">
+            <div class="logo-container inline-block mb-6 floating">
+                <div class="w-28 h-28 bg-white rounded-full shadow-lg border-4 border-white overflow-hidden">
+                    <!-- GANTI SRC DENGAN LINK LOGO KAMU -->
+                    <img src="gambar/gambar_1.jpg" alt="" id="main-logo" class="w-full h-full object-cover">
+                </div>
+            </div>
+            <h1 class="font-cute text-4xl text-brand-rose tracking-wide">flowieefasy<span class="text-pink-300">.id</span></h1>
+            <p class="text-xs uppercase tracking-[0.3em] text-pink-400 font-semibold mt-2">✨ Official Booking Hub ✨</p>
+        </header>
+
+        <!-- Menu List -->
+        <div class="space-y-4">
+            
+            <!-- T&C -->
+            <a href="https://bit.ly/flowieefasyid" class="shimmer-card block p-5 rounded-[2.5rem] flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-pastel-pink flex items-center justify-center text-brand-rose shadow-inner">
+                    <i class="fa-solid fa-star-and-crescent text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-700">Terms & Conditions</h3>
+                    <p class="text-[10px] text-gray-400">Hal-hal yang perlu kamu tahu</p>
+                </div>
+                <i class="fa-solid fa-sparkles ml-auto text-pink-200"></i>
+            </a>
+
+            <!-- FAQ -->
+            <a href="LINK_WEB_FAQ" class="shimmer-card block p-5 rounded-[2.5rem] flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-pastel-lilac flex items-center justify-center text-purple-400 shadow-inner">
+                    <i class="fa-solid fa-wand-magic-sparkles text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-700">F.A.Q</h3>
+                    <p class="text-[10px] text-gray-400">Jawaban buat keraguanmu</p>
+                </div>
+            </a>
+
+            <!-- Testimoni -->
+            <a href="LINK_WEB_TESTIMONI" class="shimmer-card block p-5 rounded-[2.5rem] flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-pastel-peach flex items-center justify-center text-orange-300 shadow-inner">
+                    <i class="fa-solid fa-heart text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-700">Testimoni Secured</h3>
+                    <p class="text-[10px] text-gray-400">Bukti keberhasilan war</p>
+                </div>
+            </a>
+
+            <!-- Form Pendaftaran - Glowing Primary -->
+            <a href="LINK_GFORM" target="_blank" class="shimmer-card block p-6 rounded-[2.5rem] bg-gradient-to-r from-pink-300 to-rose-400 text-center shadow-lg group">
+                <span class="text-white font-bold tracking-widest flex items-center justify-center gap-2">
+                    ISI FORM BOOKING DISINI
+                    <i class="fa-solid fa-arrow-right-long animate-pulse"></i>
+                </span>
+            </a>
+
+        </div>
+
+        <!-- Social Icons -->
+        <footer class="mt-12">
+            <div class="flex justify-center gap-10 items-center">
+                <a href="https://instagram.com/flowieefasy.id" target="_blank" class="text-brand-rose text-2xl hover:scale-125 transition-transform">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/6285921897024" target="_blank" class="text-brand-rose text-2xl hover:scale-125 transition-transform">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <a href="https://x.com/byflowieefasy_" target="_blank" class="text-brand-rose text-2xl hover:scale-125 transition-transform">
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
+            </div>
+            <p class="text-center text-[9px] text-pink-300 font-bold mt-8 tracking-[0.5em] uppercase">~ Your Ticket Fairy ~</p>
+        </footer>
+
+    </div>
+
+    <!-- Script buat nambahin efek bintang-bintang kecil yang muncul acak -->
+    <script>
+        function createSparkle() {
+            const sparkle = document.createElement('i');
+            sparkle.className = 'fa-solid fa-sparkle sparkle text-pink-200';
+            const size = Math.random() * 15 + 10;
+            sparkle.style.fontSize = `${size}px`;
+            sparkle.style.left = Math.random() * 100 + 'vw';
+            sparkle.style.top = Math.random() * 100 + 'vh';
+            sparkle.style.animationDuration = Math.random() * 2 + 1 + 's';
+            
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 3000);
+        }
+
+        setInterval(createSparkle, 500);
+    </script>
+</body>
+</html>
